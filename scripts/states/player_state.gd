@@ -1,10 +1,14 @@
 class_name PlayerState extends State
 
 const IDLE = "Idle"
+const CROUCHING = "Crouching"
+const WALKING = "Walking"
 const RUNNING = "Running"
+const CROUCHWALKING = "CrouchWalking"
 const JUMPING = "Jumping"
 const FALLING = "Falling"
 const ATTACK = "Attacking"
+
 
 var player: Player
 

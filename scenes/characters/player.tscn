@@ -100,7 +100,7 @@
 [ext_resource type="Script" uid="uid://csg3xrlmslh1g" path="res://scripts/states/crouchwalk.gd" id="98_uvbm0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wocps"]
-size = Vector2(8, 25)
+size = Vector2(14, 25)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnye5"]
 atlas = ExtResource("42_5bn3a")
@@ -531,10 +531,8 @@ shape = SubResource("RectangleShape2D_wocps")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660983629]
 sprite_frames = SubResource("SpriteFrames_pue7u")
-animation = &"RunPunch1"
+animation = &"Idle"
 autoplay = "Idle"
-frame = 6
-frame_progress = 1.0
 offset = Vector2(0, -17.5)
 
 [node name="StateMachine" type="Node" parent="." unique_id=1658389747 node_paths=PackedStringArray("initial_state")]
@@ -565,5 +563,16 @@ script = ExtResource("98_uvbm0")
 [node name="DamageArea" type="Area2D" parent="." unique_id=1245891573]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea" unique_id=829852410]
+visible = false
 position = Vector2(14.5, -18)
 shape = SubResource("RectangleShape2D_qoogc")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1834789777]
+wait_time = 0.2
+
+[node name="JumpBufferingTimer" type="Timer" parent="." unique_id=827118861]
+wait_time = 0.1
+ignore_time_scale = true
+
+[connection signal="timeout" from="CoyoteTimer" to="StateMachine/Falling" method="_on_coyote_timer_timeout"]
+[connection signal="timeout" from="JumpBufferingTimer" to="StateMachine/Falling" method="_on_jump_buffering_timer_timeout"]

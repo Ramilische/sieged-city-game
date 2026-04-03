@@ -9,6 +9,11 @@ func physics_update(delta: float) -> void:
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
+	godmode()
 
 	if player.velocity.y >= 0:
 		finished.emit(FALLING)
+
+func godmode():
+	if player.double_jump and Input.is_action_just_pressed("jump"):
+		player.velocity.y = -player.jump_impulse

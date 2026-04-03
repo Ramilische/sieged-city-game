@@ -9,7 +9,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func physics_update(delta: float) -> void:
 	var input_direction_x := Input.get_axis("move_left", "move_right")
 	
-	player.velocity.x = player.speed * input_direction_x
+	acceleration(input_direction_x)
 	player.velocity.y += player.gravity * delta
 	player.move_and_slide()
 
@@ -30,6 +30,13 @@ func state_change(direction: float):
 		finished.emit(ATTACK, {'type': 'swordground'})
 	elif is_equal_approx(direction, 0.0):
 		finished.emit(IDLE)
+
+func acceleration(direction: float):
+	var curr = player.velocity.x
+	if is_equal_approx(direction, 0.0):
+		player.velocity.x = move_toward(curr, 0.0, player.deceleration)
+	else:
+		player.velocity.x = move_toward(curr, player.speed * direction, player.acceleration)
 
 func flipping(direction: float):
 	if direction == 0:

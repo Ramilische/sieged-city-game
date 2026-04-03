@@ -8,6 +8,7 @@ const CROUCHWALKING = "CrouchWalking"
 const JUMPING = "Jumping"
 const FALLING = "Falling"
 const ATTACK = "Attacking"
+const HIT = "Hit"
 
 
 var player: Player

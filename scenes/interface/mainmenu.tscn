@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://dhla7jkvgv3b5"]
+
+[ext_resource type="Texture2D" uid="uid://ci7hwpi4ch8n3" path="res://assets/img/environment/backgrounds/town/background_Town1.png" id="1_0ahwo"]
+[ext_resource type="Script" uid="uid://d2veph1ytcyh2" path="res://scripts/ui/mainmenu.gd" id="1_02f7e"]
+[ext_resource type="Texture2D" uid="uid://dmiibnxdwwkik" path="res://assets/img/environment/backgrounds/town/background_Town2.png" id="2_36rvq"]
+[ext_resource type="Texture2D" uid="uid://otw2ixi76ket" path="res://assets/img/environment/backgrounds/town/background_Town3.png" id="3_02f7e"]
+[ext_resource type="LabelSettings" uid="uid://bqgj1oghe1u6g" path="res://scenes/interface/title_settings.tres" id="4_36rvq"]
+[ext_resource type="FontFile" uid="uid://sojfafdgw8wb" path="res://assets/fonts/monogram-extended.ttf" id="4_kci6l"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02f7e"]
+bg_color = Color(0, 0, 0, 0.6862745)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="Theme" id="Theme_kci6l"]
+default_font = ExtResource("4_kci6l")
+default_font_size = 26
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 6
+Button/styles/normal = SubResource("StyleBoxFlat_02f7e")
+
+[node name="Start Menu" type="Control" unique_id=862794711]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_02f7e")
+
+[node name="Background" type="AspectRatioContainer" parent="." unique_id=1594903445]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+ratio = 1.7778
+
+[node name="Back" type="TextureRect" parent="Background" unique_id=689020785]
+layout_mode = 2
+texture = ExtResource("1_0ahwo")
+
+[node name="Mid" type="TextureRect" parent="Background" unique_id=1303106123]
+layout_mode = 2
+texture = ExtResource("2_36rvq")
+
+[node name="Front" type="TextureRect" parent="Background" unique_id=1373634206]
+layout_mode = 2
+texture = ExtResource("3_02f7e")
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=630249750]
+layout_mode = 0
+offset_right = 640.0
+offset_bottom = 360.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=64607674]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2100103832]
+layout_mode = 2
+text = "Название игры"
+label_settings = ExtResource("4_36rvq")
+
+[node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=626906850]
+layout_mode = 2
+theme = SubResource("Theme_kci6l")
+text = "Старт"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

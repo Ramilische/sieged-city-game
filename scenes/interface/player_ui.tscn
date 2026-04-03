@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://gegstwv4u7pm"]
+
+[ext_resource type="Script" uid="uid://da6epcgxb7tb6" path="res://scripts/ui/player_ui.gd" id="1_8o63q"]
+[ext_resource type="LabelSettings" uid="uid://bqgj1oghe1u6g" path="res://scenes/interface/title_settings.tres" id="1_vxd5u"]
+
+[node name="Player UI" type="CanvasLayer" unique_id=971522410]
+script = ExtResource("1_8o63q")
+
+[node name="TopLeft" type="VBoxContainer" parent="." unique_id=514572096]
+offset_left = 15.0
+offset_right = 88.0
+offset_bottom = 66.0
+
+[node name="HP" type="Label" parent="TopLeft" unique_id=2112691238]
+layout_mode = 2
+text = "HP"
+label_settings = ExtResource("1_vxd5u")
+
+[node name="Level" type="Label" parent="TopLeft" unique_id=1270800835]
+layout_mode = 2
+text = "Level"
+label_settings = ExtResource("1_vxd5u")

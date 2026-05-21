@@ -25,7 +25,6 @@ func physics_update(delta: float) -> void:
 func state_change(direction):
 	if player.is_on_floor():
 		if buffered_jump:
-			print('Jumped a buffered jump!')
 			buffered_jump = false
 			finished.emit(JUMPING)
 		elif is_equal_approx(direction, 0.0):
@@ -44,14 +43,12 @@ func flipping(direction: float):
 func coyote():
 	if Input.is_action_just_pressed("jump") and not player.coyote_timer.is_stopped():
 		player.coyote_timer.stop()
-		print('Coyote jump!')
 		finished.emit(JUMPING)
 
 func jumpbuffer():
 	if Input.is_action_just_pressed("jump") and player.jump_buffering_timer.is_stopped():
 		player.jump_buffering_timer.start()
 		buffered_jump = true
-		print('Buffered a jump!')
 
 func godmode():
 	if player.double_jump and Input.is_action_just_pressed("jump"):

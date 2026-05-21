@@ -102,6 +102,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wocps"]
 size = Vector2(14, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_17uin"]
+size = Vector2(14, 21)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_tnye5"]
 atlas = ExtResource("42_5bn3a")
 region = Rect2(0, 0, 50, 37)
@@ -522,6 +525,33 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qoogc"]
 size = Vector2(21, 36)
 
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_17uin"]
+points = PackedVector2Array(6, -8, 6, 10, -5, 18, -18, 17, -6, 3, -23, -12, -14, -15, -4, -15)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_uvbm0"]
+points = PackedVector2Array(7, -7, 14, -20, 1, -30, 13, -30, 22, -22, 22, -8, 13, 0, -7, 0, -16, -2, -10, -8)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_4ttjg"]
+points = PackedVector2Array(-4, -25, 25, -14, 25, -7, 10, -1, -13, -1, -26, -6, -15, -11, 15, -10, -5, -21)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_a0qwr"]
+points = PackedVector2Array(11, -18, 21, -18, 21, -8, -8, -8, -8, -15, 11, -15)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_0qop1"]
+points = PackedVector2Array(22, -19, -5, -19, -5, -11, 22, -11)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_i42og"]
+points = PackedVector2Array(21, -23, 21, -12, 6, -4, -5, -5, 4, -8, 11, -23)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_8twii"]
+points = PackedVector2Array(21, -7, -14, -15, -21, -14, -21, -18, -8, -19, 21, -14)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_t733j"]
+points = PackedVector2Array(21, -24, 21, -17, 7, -5, 5, -8, 11, -17, 14, -24)
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_hsapr"]
+points = PackedVector2Array(22, -17, 22, -10, 6, -3, 6, -9, 9, -17)
+
 [node name="Player" type="CharacterBody2D" unique_id=223519449]
 script = ExtResource("1_5jukt")
 
@@ -529,9 +559,14 @@ script = ExtResource("1_5jukt")
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_wocps")
 
+[node name="CrouchCollision" type="CollisionShape2D" parent="." unique_id=1422986606]
+position = Vector2(0, -10.5)
+shape = SubResource("RectangleShape2D_17uin")
+disabled = true
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660983629]
 sprite_frames = SubResource("SpriteFrames_pue7u")
-animation = &"Idle"
+animation = &"Attack1"
 autoplay = "Idle"
 offset = Vector2(0, -17.5)
 
@@ -574,5 +609,74 @@ wait_time = 0.2
 wait_time = 0.1
 ignore_time_scale = true
 
+[node name="Hitboxes" type="Node2D" parent="." unique_id=95096324]
+
+[node name="SwordAttack1" type="Area2D" parent="Hitboxes" unique_id=862756011]
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/SwordAttack1" unique_id=2108980451]
+position = Vector2(18, -21)
+shape = SubResource("ConvexPolygonShape2D_17uin")
+
+[node name="SwordAttack2" type="Area2D" parent="Hitboxes" unique_id=918433953]
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/SwordAttack2" unique_id=550201064]
+shape = SubResource("ConvexPolygonShape2D_uvbm0")
+
+[node name="SwordAttack3" type="Area2D" parent="Hitboxes" unique_id=1962337132]
+visible = false
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/SwordAttack3" unique_id=425154751]
+shape = SubResource("ConvexPolygonShape2D_4ttjg")
+
+[node name="PunchAttack1" type="Area2D" parent="Hitboxes" unique_id=1538688946]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/PunchAttack1" unique_id=749330697]
+shape = SubResource("ConvexPolygonShape2D_a0qwr")
+
+[node name="PunchAttack2" type="Area2D" parent="Hitboxes" unique_id=603133703]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/PunchAttack2" unique_id=1636276151]
+shape = SubResource("ConvexPolygonShape2D_0qop1")
+
+[node name="PunchAttack3" type="Area2D" parent="Hitboxes" unique_id=2043868328]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/PunchAttack3" unique_id=177026550]
+shape = SubResource("ConvexPolygonShape2D_i42og")
+
+[node name="RunPunchAttack" type="Area2D" parent="Hitboxes" unique_id=397856230]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/RunPunchAttack" unique_id=1210823003]
+shape = SubResource("ConvexPolygonShape2D_8twii")
+
+[node name="KickAttack1" type="Area2D" parent="Hitboxes" unique_id=1687642368]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/KickAttack1" unique_id=1234170148]
+shape = SubResource("ConvexPolygonShape2D_t733j")
+
+[node name="KickAttack2" type="Area2D" parent="Hitboxes" unique_id=318295134]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/KickAttack2" unique_id=1288425869]
+shape = SubResource("ConvexPolygonShape2D_hsapr")
+
 [connection signal="timeout" from="CoyoteTimer" to="StateMachine/Falling" method="_on_coyote_timer_timeout"]
 [connection signal="timeout" from="JumpBufferingTimer" to="StateMachine/Falling" method="_on_jump_buffering_timer_timeout"]
+[connection signal="body_entered" from="Hitboxes/SwordAttack1" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/SwordAttack2" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/SwordAttack3" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/PunchAttack1" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/PunchAttack2" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/PunchAttack3" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/RunPunchAttack" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/KickAttack1" to="StateMachine/Attacking" method="_on_body_entered"]
+[connection signal="body_entered" from="Hitboxes/KickAttack2" to="StateMachine/Attacking" method="_on_body_entered"]

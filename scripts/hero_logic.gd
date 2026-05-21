@@ -5,7 +5,11 @@ extends RefCounted
 @export var max_health: int = 100
 @export var level: int = 1
 @export var xp: int = 0
+@export var damage_modifier: float = 1.0
+@export var damage_modifier_unarmed: float = 1.0
 var xp_to_next_level: int
+
+var inventory: Inventory
 
 const level_cap: int = 20
 const xp_to_level_up: Dictionary = {
@@ -30,10 +34,40 @@ const xp_to_level_up: Dictionary = {
 	19: 1900
 }
 
+signal dead()
+signal health_change()
+signal xp_change()
+
+
 func _init() -> void:
 	xp_to_next_level = xp_to_level_up[level] - xp
+	inventory = Inventory.new()
+	inventory.print()
 	# Здесь должна быть подгрузка статов из выбранного файла сохранения
 	pass
+
+func take_damage(dmg: int) -> void:
+	health -= min(dmg, health)
+	health_change.emit()
+	if health <= 0:
+		death()
+
+func earn_xp(new_xp: int):
+	xp += new_xp
+	while xp >= xp_to_level_up[level]:
+		xp -= xp_to_level_up[level]
+		level += 1
+	xp_change.emit()
+
+func damage(base_damage: int, is_weapon: bool) -> int:
+	if is_weapon:
+		return round(base_damage * damage_modifier)
+	else:
+		return round(base_damage * damage_modifier_unarmed)
+
+func death() -> void:
+	dead.emit()
+
 
 func serialize() -> Dictionary:
 	var res: Dictionary = {
@@ -46,22 +80,9 @@ func serialize() -> Dictionary:
 	return res
 
 func save_progress(save_number: int) -> void:
-	# Скорее всего сохранения придется переработать, т.к. пока сохраняются
-	# только статы игрока. Посмотреть:
+	# Посмотреть:
 	# https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
-
-	var path = 'user://autosave.save'
-	if save_number != 0: # если номер сохранения 0, то это автосохранение
-		path = 'user://save_%s.save' % save_number
-
-	var file = FileAccess.open(path, FileAccess.WRITE)
-	var data = JSON.stringify(serialize())
-	file.store_line(data)
-	
+	pass
 
 func load_progress(save_number: int) -> void:
-	# Скорее всего сохранения придется переработать, т.к. пока сохраняются
-	# только статы игрока. Посмотреть:
-	# https://docs.godotengine.org/en/stable/tutorials/io/saving_games.html
-
 	pass

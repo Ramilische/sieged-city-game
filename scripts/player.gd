@@ -5,6 +5,7 @@ class_name Player extends CharacterBody2D
 @export var deceleration: float = 50.0
 @export var crouch_speed: float = 100.0
 @export var jump_impulse: float = 300.0
+@export var push_force: float = 100
 @export var gravity: float = 980.0
 @export var jump_buffering: bool = true
 @export var coyote_time: bool = true
@@ -19,9 +20,14 @@ var normal_speed: float = speed
 var speed_boost: float = 2.0
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hitboxes_node = $Hitboxes
 @onready var coyote_timer: Timer = $CoyoteTimer
 @onready var jump_buffering_timer: Timer = $JumpBufferingTimer
 @onready var stats = HeroLogic.new()
+
+
+func _ready() -> void:
+	stats.dead.connect(death)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):
@@ -34,3 +40,11 @@ func _process(delta: float) -> void:
 		else:
 			double_jump = false
 			speed = normal_speed
+	for i in get_slide_collision_count():
+		var c = get_slide_collision(i)
+		var obj = c.get_collider()
+		if obj is RigidBody2D:
+			obj.apply_central_impulse(-c.get_normal() * push_force)
+
+func death():
+	get_tree().change_scene_to_file("res://scenes/interface/mainmenu.tscn")

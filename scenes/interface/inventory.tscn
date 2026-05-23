@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://mfv22lgcmlss"]
 
+[ext_resource type="PackedScene" uid="uid://cvgfdt1moy2g5" path="res://scenes/interface/slot.tscn" id="1_wosp6"]
+[ext_resource type="Texture2D" uid="uid://b7il0lfkj5xs7" path="res://assets/img/ui/Backpacks.png" id="2_s4k75"]
+
 [node name="Inventory" type="Control" unique_id=2124221993]
 layout_mode = 3
 anchors_preset = 15
@@ -7,3 +10,105 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="hotbar" type="GridContainer" parent="." unique_id=1635932780]
+layout_mode = 1
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 41.0
+offset_bottom = 80.0
+columns = 2
+
+[node name="Slot" parent="hotbar" unique_id=119272309 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot2" parent="hotbar" unique_id=850674517 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot3" parent="hotbar" unique_id=545018121 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot4" parent="hotbar" unique_id=1138901649 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot5" parent="hotbar" unique_id=279775135 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot6" parent="hotbar" unique_id=856028908 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot7" parent="hotbar" unique_id=1233258622 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot8" parent="hotbar" unique_id=1298575528 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="inventory" type="GridContainer" parent="." unique_id=1657518918]
+layout_mode = 0
+offset_left = 45.0
+offset_top = 4.0
+offset_right = 101.0
+offset_bottom = 80.0
+columns = 3
+
+[node name="Slot" parent="inventory" unique_id=1833095894 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot2" parent="inventory" unique_id=2133447267 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot3" parent="inventory" unique_id=1913222894 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot4" parent="inventory" unique_id=1505005093 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot5" parent="inventory" unique_id=197299508 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot6" parent="inventory" unique_id=1181859106 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot7" parent="inventory" unique_id=682544700 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot8" parent="inventory" unique_id=564146846 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot9" parent="inventory" unique_id=315397578 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot10" parent="inventory" unique_id=2002826799 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot11" parent="inventory" unique_id=335228936 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="Slot12" parent="inventory" unique_id=828642111 instance=ExtResource("1_wosp6")]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=755456925]
+position = Vector2(3, 84)
+scale = Vector2(1.25, 1.1875002)
+texture_normal = ExtResource("2_s4k75")
+action = "inventory"

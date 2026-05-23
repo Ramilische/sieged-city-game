@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cvgfdt1moy2g5"]
+
+[node name="Slot" type="Panel" unique_id=119272309]
+offset_right = 16.0
+offset_bottom = 16.0
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1948280980]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0

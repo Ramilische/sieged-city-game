@@ -566,8 +566,10 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660983629]
 sprite_frames = SubResource("SpriteFrames_pue7u")
-animation = &"Attack3"
+animation = &"CrouchWalk"
 autoplay = "Idle"
+frame = 2
+frame_progress = 0.6520474
 offset = Vector2(0, -17.5)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1944855361]

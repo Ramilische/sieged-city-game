@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://mfv22lgcmlss"]
 
 [ext_resource type="PackedScene" uid="uid://cvgfdt1moy2g5" path="res://scenes/interface/slot.tscn" id="1_wosp6"]
-[ext_resource type="Texture2D" uid="uid://b7il0lfkj5xs7" path="res://assets/img/ui/Backpacks.png" id="2_s4k75"]
 
 [node name="Inventory" type="Control" unique_id=2124221993]
 layout_mode = 3
@@ -106,9 +105,3 @@ layout_mode = 2
 [node name="Slot12" parent="inventory" unique_id=828642111 instance=ExtResource("1_wosp6")]
 custom_minimum_size = Vector2(16, 16)
 layout_mode = 2
-
-[node name="TouchScreenButton" type="TouchScreenButton" parent="." unique_id=755456925]
-position = Vector2(3, 84)
-scale = Vector2(1.25, 1.1875002)
-texture_normal = ExtResource("2_s4k75")
-action = "inventory"

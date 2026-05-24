@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://rymtj210opim"]
+
+[ext_resource type="FontFile" uid="uid://sojfafdgw8wb" path="res://assets/fonts/monogram-extended.ttf" id="1_7o6wt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_02f7e"]
+bg_color = Color(0, 0, 0, 0.6862745)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[resource]
+default_font = ExtResource("1_7o6wt")
+default_font_size = 26
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/constants/outline_size = 6
+Button/styles/normal = SubResource("StyleBoxFlat_02f7e")

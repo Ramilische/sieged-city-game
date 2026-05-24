@@ -40,7 +40,6 @@ func _ready() -> void:
 
 func generate_raycasts() -> void:
 	var ray_count := angle_cone_of_vision / step_between_rays
-	print(ray_count)
 	for i in range(ray_count):
 		var ray: RayCast2D = RayCast2D.new()
 		var angle = step_between_rays * (i - ray_count / 2.0)

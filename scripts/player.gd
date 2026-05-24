@@ -11,6 +11,7 @@ class_name Player extends CharacterBody2D
 @export var coyote_time: bool = true
 
 var curr_state
+var processing_movement_input: bool = true
 var is_running: bool = false
 var sword_drawn: bool = false
 var is_flipped: bool = false
@@ -25,13 +26,42 @@ var speed_boost: float = 2.0
 @onready var jump_buffering_timer: Timer = $JumpBufferingTimer
 @onready var stats = HeroLogic.new()
 
+var footsteps = [
+	preload("res://assets/audio/sfx/steps/step1.wav"),
+	preload("res://assets/audio/sfx/steps/step2.wav"),
+	preload("res://assets/audio/sfx/steps/step3.wav"),
+	preload("res://assets/audio/sfx/steps/step4.wav"),
+	preload("res://assets/audio/sfx/steps/step5.wav"),
+]
+var swooshes = [
+	preload('res://assets/audio/sfx/attacks/1.mp3'),
+	preload('res://assets/audio/sfx/attacks/2.mp3'),
+	preload('res://assets/audio/sfx/attacks/3.mp3'),
+	preload('res://assets/audio/sfx/attacks/4.mp3'),
+	preload('res://assets/audio/sfx/attacks/5.mp3'),
+	preload('res://assets/audio/sfx/attacks/6.mp3'),
+	preload('res://assets/audio/sfx/attacks/7.mp3'),
+	preload('res://assets/audio/sfx/attacks/8.mp3'),
+	preload('res://assets/audio/sfx/attacks/9.mp3'),
+	preload('res://assets/audio/sfx/attacks/10.mp3')
+]
+var attacks = {
+	'Attack': [
+		preload("res://assets/audio/sfx/attacks/Attack1.wav"), 
+		preload("res://assets/audio/sfx/attacks/Attack2.wav"), 
+		preload("res://assets/audio/sfx/attacks/Attack3.wav")],
+	'Kick': swooshes,
+	'Punch': swooshes,
+	'RunPunch': swooshes
+}
+
 
 func _ready() -> void:
 	stats.dead.connect(death)
 
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("menu"):
-		get_tree().quit()
+	#if Input.is_action_just_pressed("menu"):
+		#get_tree().quit()
 	if Input.is_action_just_pressed("godmode"):
 		godmode = not godmode
 		if godmode:
@@ -48,3 +78,29 @@ func _process(delta: float) -> void:
 
 func death():
 	get_tree().change_scene_to_file("res://scenes/interface/mainmenu.tscn")
+
+func update_player_audio(audio_name: String):
+	if audio_name:
+		pass
+
+func play_footsteps(muffled: bool = false):
+	var audio_player = AudioStreamPlayer2D.new()
+	if muffled:
+		audio_player.volume_db -= 5
+	audio_player.stream = footsteps.pick_random()
+	audio_player.bus = 'SFX'
+	get_tree().root.add_child(audio_player)
+	audio_player.global_position = position
+	audio_player.play()
+	await audio_player.finished
+	audio_player.queue_free()
+
+func play_attack_sound(phase, name):
+	var audio_player = AudioStreamPlayer2D.new()
+	audio_player.stream = attacks[name].pick_random()
+	audio_player.bus = 'SFX'
+	get_tree().root.add_child(audio_player)
+	audio_player.global_position = position
+	audio_player.play()
+	await audio_player.finished
+	audio_player.queue_free()

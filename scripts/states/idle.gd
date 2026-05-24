@@ -17,6 +17,8 @@ func physics_update(_delta: float) -> void:
 func state_change():
 	if not player.is_on_floor():
 		finished.emit(FALLING)
+	elif player.processing_movement_input == false:
+		pass
 	elif Input.is_action_just_pressed("crouch"):
 		finished.emit(CROUCHING)
 	elif Input.is_action_just_pressed("draw_sword"):

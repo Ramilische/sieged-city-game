@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://da6epcgxb7tb6" path="res://scripts/ui/player_ui.gd" id="1_8o63q"]
 [ext_resource type="LabelSettings" uid="uid://dkd0txrpygx8q" path="res://scenes/interface/ui_1_settings.tres" id="2_8o63q"]
+[ext_resource type="PackedScene" uid="uid://cegdxts6120ss" path="res://scenes/interface/settings.tscn" id="3_lcwk1"]
 
 [node name="Player UI" type="CanvasLayer" unique_id=971522410]
 script = ExtResource("1_8o63q")
@@ -32,3 +33,5 @@ columns = 5
 offset_right = 640.0
 offset_bottom = 360.0
 color = Color(0, 0, 0, 0.5019608)
+
+[node name="Settings" parent="." unique_id=410808083 instance=ExtResource("3_lcwk1")]

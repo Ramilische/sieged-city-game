@@ -111,4 +111,6 @@ func change_pursuing_enemies(amount: int):
 		AudioGlobal.is_battle = false
 	else:
 		AudioGlobal.is_battle = true
-		
+
+func prompt_scene_change():
+	pass # тут надо послать в ui сообщение о том, что телепорт готов

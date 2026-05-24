@@ -12,6 +12,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	enemy.stats.health_change.connect(_on_getting_damaged)
 	direction = -1 if enemy.position.x > enemy.patrol_center_x else 1
 	flipping()
+	AudioGlobal.is_battle = false
 
 func physics_update(_delta: float) -> void:
 	distance = enemy.position.x - enemy.patrol_center_x

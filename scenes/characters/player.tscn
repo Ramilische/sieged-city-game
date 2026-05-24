@@ -570,6 +570,8 @@ animation = &"Attack1"
 autoplay = "Idle"
 offset = Vector2(0, -17.5)
 
+[node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1944855361]
+
 [node name="StateMachine" type="Node" parent="." unique_id=1658389747 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("32_vwwfy")
 initial_state = NodePath("Idle")

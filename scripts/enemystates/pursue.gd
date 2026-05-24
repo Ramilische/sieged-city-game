@@ -12,6 +12,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	direction = data['dir']
 	player = data['player']
 	flipping(direction)
+	AudioGlobal.is_battle = true
 
 func physics_update(_delta: float) -> void:
 	enemy.velocity.y += enemy.gravity * _delta

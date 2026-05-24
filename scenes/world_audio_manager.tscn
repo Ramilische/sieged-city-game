@@ -1,0 +1,110 @@
+[gd_scene format=3 uid="uid://don56t0gdktig"]
+
+[ext_resource type="Script" uid="uid://cs3480bwkcnat" path="res://scripts/world_audio_manager.gd" id="1_tqnl8"]
+[ext_resource type="AudioStream" uid="uid://ebuupubopjxp" path="res://assets/audio/music/ambient1.wav" id="2_y8odq"]
+[ext_resource type="AudioStream" uid="uid://b5vh1mgk0yghr" path="res://assets/audio/music/ambient2.wav" id="3_7gk7a"]
+[ext_resource type="AudioStream" uid="uid://puv1i56ar7xk" path="res://assets/audio/music/ambient3.wav" id="4_14rrb"]
+[ext_resource type="AudioStream" uid="uid://1ul6oaiq3pd6" path="res://assets/audio/music/ambient4.wav" id="5_piyws"]
+[ext_resource type="AudioStream" uid="uid://byi1slu3ormae" path="res://assets/audio/music/cave.wav" id="6_7gk7a"]
+[ext_resource type="AudioStream" uid="uid://b0il8sdmhdhyr" path="res://assets/audio/music/battle1.wav" id="6_8aqrj"]
+[ext_resource type="AudioStream" uid="uid://bswfyv30kegye" path="res://assets/audio/music/battle2.wav" id="7_6infx"]
+[ext_resource type="AudioStream" uid="uid://f81lemukakky" path="res://assets/audio/music/battle3.wav" id="8_j0mhn"]
+[ext_resource type="AudioStream" uid="uid://dqs75yip62pqg" path="res://assets/audio/music/battle4.wav" id="9_0uidc"]
+[ext_resource type="AudioStream" uid="uid://donfx44yykifw" path="res://assets/audio/music/battle5.wav" id="10_04lne"]
+[ext_resource type="AudioStream" uid="uid://bsswqoyj5ujqn" path="res://assets/audio/music/battle6.wav" id="11_swuc3"]
+[ext_resource type="AudioStream" uid="uid://dgw4cyg8byli6" path="res://assets/audio/music/battle7.wav" id="12_srxjm"]
+[ext_resource type="AudioStream" uid="uid://bbc1b4d8ijbj6" path="res://assets/audio/music/battle8.wav" id="13_y7fy2"]
+[ext_resource type="AudioStream" uid="uid://d2dxasdd6koso" path="res://assets/audio/music/menu.wav" id="15_14rrb"]
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_2dvop"]
+shuffle = true
+stream_count = 4
+stream_0 = ExtResource("2_y8odq")
+stream_1 = ExtResource("3_7gk7a")
+stream_2 = ExtResource("4_14rrb")
+stream_3 = ExtResource("5_piyws")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_5y8ww"]
+shuffle = true
+stream_count = 1
+stream_0 = ExtResource("6_7gk7a")
+
+[sub_resource type="AudioStreamPlaylist" id="AudioStreamPlaylist_ooluu"]
+stream_count = 8
+stream_0 = ExtResource("6_8aqrj")
+stream_1 = ExtResource("7_6infx")
+stream_2 = ExtResource("8_j0mhn")
+stream_3 = ExtResource("9_0uidc")
+stream_4 = ExtResource("10_04lne")
+stream_5 = ExtResource("11_swuc3")
+stream_6 = ExtResource("12_srxjm")
+stream_7 = ExtResource("13_y7fy2")
+
+[sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_ad0ca"]
+clip_count = 4
+clip_0/name = &"CityMusic"
+clip_0/stream = SubResource("AudioStreamPlaylist_2dvop")
+clip_0/auto_advance = 0
+clip_1/name = &"CatacombsMusic"
+clip_1/stream = SubResource("AudioStreamPlaylist_5y8ww")
+clip_1/auto_advance = 0
+clip_2/name = &"BattleMusic"
+clip_2/stream = SubResource("AudioStreamPlaylist_ooluu")
+clip_2/auto_advance = 0
+clip_3/name = &"MenuMusic"
+clip_3/stream = ExtResource("15_14rrb")
+clip_3/auto_advance = 0
+_transitions = {
+Vector2i(-1, -1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(0, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(0, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(1, 2): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 0): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+},
+Vector2i(2, 1): {
+"fade_beats": 1.0,
+"fade_mode": 3,
+"from_time": 0,
+"to_time": 1
+}
+}
+
+[node name="WorldAudioManager" type="Node" unique_id=841751448 node_paths=PackedStringArray("bg_music_player")]
+script = ExtResource("1_tqnl8")
+bg_music_player = NodePath("BackgroundMusicPlayer")
+
+[node name="BackgroundMusicPlayer" type="AudioStreamPlayer" parent="." unique_id=1957437046]
+stream = SubResource("AudioStreamInteractive_ad0ca")
+volume_db = -10.0
+autoplay = true
+bus = &"Music"

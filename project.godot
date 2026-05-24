@@ -16,6 +16,15 @@ config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=240
 config/icon="res://icon.svg"
 
+[audio]
+
+buses/default_bus_layout="uid://bhdhit5dbtfqr"
+
+[autoload]
+
+WorldAudioManager="*uid://don56t0gdktig"
+AudioGlobal="*uid://hhspt23y3hni"
+
 [display]
 
 window/size/viewport_width=640

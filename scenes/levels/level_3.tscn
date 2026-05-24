@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://bipwyki2ohs02" path="res://assets/img/environment/tilesets/church.png" id="8_josfm"]
 [ext_resource type="PackedScene" uid="uid://dbc1plm2p1tq3" path="res://scenes/characters/enemy.tscn" id="9_lgrx1"]
 [ext_resource type="Texture2D" uid="uid://bittx6v83bren" path="res://assets/img/environment/tilesets/houses.png" id="11_apo5x"]
+[ext_resource type="Texture2D" uid="uid://cn4wam8lw3ce" path="res://assets/img/environment/backgrounds/town2/background.png" id="13_t4txi"]
+[ext_resource type="Texture2D" uid="uid://om8huqmmt18s" path="res://assets/img/environment/backgrounds/town2/middleground.png" id="14_apo5x"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_josfm"]
 texture = ExtResource("3_qi5uv")
@@ -1817,7 +1819,7 @@ sources/10 = SubResource("TileSetAtlasSource_lgrx1")
 
 [node name="Player" parent="." unique_id=223519449 instance=ExtResource("1_pimnq")]
 z_index = 10
-position = Vector2(-4986, -1572)
+position = Vector2(-10, -1616)
 
 [node name="Camera2D" type="Camera2D" parent="Player" unique_id=2097740411]
 offset = Vector2(0, -32)
@@ -1827,10 +1829,28 @@ drag_vertical_enabled = true
 drag_left_margin = 0.1
 drag_right_margin = 0.1
 
-[node name="Parallax2D" type="Parallax2D" parent="." unique_id=1105400175]
-
 [node name="Player UI" parent="." unique_id=971522410 node_paths=PackedStringArray("player") instance=ExtResource("2_2bnyt")]
 player = NodePath("../Player")
+
+[node name="Background" type="Parallax2D" parent="." unique_id=2093082947]
+z_index = -1
+scroll_scale = Vector2(0.1, 1)
+scroll_offset = Vector2(-42, -1671)
+repeat_size = Vector2(384, 0)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Background" unique_id=802309919]
+texture = ExtResource("13_t4txi")
+
+[node name="Middleground" type="Parallax2D" parent="." unique_id=1762030715]
+z_index = -1
+scroll_scale = Vector2(0.3, 1)
+scroll_offset = Vector2(-42, -1671)
+repeat_size = Vector2(384, 0)
+repeat_times = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="Middleground" unique_id=1992664119]
+texture = ExtResource("14_apo5x")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1043215581]
 tile_set = SubResource("TileSet_kva3v")

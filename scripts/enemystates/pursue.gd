@@ -8,11 +8,14 @@ var player: Player
 
 func enter(previous_state_path: String, data := {}) -> void:
 	enemy.anim_sprite.play('Run')
+	enemy.stats.dead.connect(_on_death)
 	spotted_player = true
 	direction = data['dir']
 	player = data['player']
 	flipping(direction)
-	AudioGlobal.is_battle = true
+	if 'attack' not in previous_state_path.to_lower():
+		player.change_pursuing_enemies(1)
+	print(player.pursuing_enemies)
 
 func physics_update(_delta: float) -> void:
 	enemy.velocity.y += enemy.gravity * _delta
@@ -58,8 +61,13 @@ func flipping(direction: float):
 		enemy.is_flipped = false
 		enemy.anim_sprite.flip_h = enemy.is_flipped
 
-
 func _on_player_lost_timer_timeout() -> void:
 	player_lost_timer.stop()
 	print('Lost the player')
+	player.change_pursuing_enemies(-1)
 	finished.emit(RETURN)
+
+func _on_death():
+	print('Enemy died')
+	player.change_pursuing_enemies(-1)
+	print(player.pursuing_enemies)

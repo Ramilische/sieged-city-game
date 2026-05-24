@@ -17,6 +17,7 @@ class_name Enemy extends CharacterBody2D
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var stats: EnemyLogic = EnemyLogic.new(50, 20, 10)
+@onready var state_machine: StateMachine = $"State Machine"
 @onready var pivot: Node2D
 @onready var rays: Node2D
 @onready var hit_area: Area2D

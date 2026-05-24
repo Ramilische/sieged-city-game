@@ -10,7 +10,6 @@ class_name Player extends CharacterBody2D
 @export var jump_buffering: bool = true
 @export var coyote_time: bool = true
 
-var curr_state
 var processing_movement_input: bool = true
 var is_running: bool = false
 var sword_drawn: bool = false
@@ -19,6 +18,7 @@ var godmode: bool = false
 var double_jump: bool = false
 var normal_speed: float = speed
 var speed_boost: float = 2.0
+var pursuing_enemies: int = 0
 
 @onready var anim_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hitboxes_node = $Hitboxes
@@ -58,6 +58,8 @@ var attacks = {
 
 func _ready() -> void:
 	stats.dead.connect(death)
+	print(AudioGlobal.current_location)
+	print(WorldAudioManager.current_location)
 
 func _process(delta: float) -> void:
 	#if Input.is_action_just_pressed("menu"):
@@ -79,9 +81,6 @@ func _process(delta: float) -> void:
 func death():
 	get_tree().change_scene_to_file("res://scenes/interface/mainmenu.tscn")
 
-func update_player_audio(audio_name: String):
-	if audio_name:
-		pass
 
 func play_footsteps(muffled: bool = false):
 	var audio_player = AudioStreamPlayer2D.new()
@@ -104,3 +103,12 @@ func play_attack_sound(phase, name):
 	audio_player.play()
 	await audio_player.finished
 	audio_player.queue_free()
+
+func change_pursuing_enemies(amount: int):
+	pursuing_enemies += amount
+	if pursuing_enemies <= 0:
+		pursuing_enemies = 0
+		AudioGlobal.is_battle = false
+	else:
+		AudioGlobal.is_battle = true
+		

@@ -566,7 +566,7 @@ disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660983629]
 sprite_frames = SubResource("SpriteFrames_pue7u")
-animation = &"Attack3"
+animation = &"Punch3"
 autoplay = "Idle"
 offset = Vector2(0, -17.5)
 

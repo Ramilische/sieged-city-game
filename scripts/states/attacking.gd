@@ -200,3 +200,6 @@ func _on_body_entered(body: Node2D) -> void:
 	var attack = attacks[attack_type]
 	body.stats.take_damage(player.stats.damage(attack['damage'][attack_phase], attack['is_weapon']))
 	already_damaged = true
+	if body is Enemy:
+		if body.stats.enemy_health <= 0:
+			player.change_pursuing_enemies(-1)

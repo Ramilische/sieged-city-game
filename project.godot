@@ -10,7 +10,7 @@ config_version=5
 
 [application]
 
-config/name="Nikolaev"
+config/name="Sieged City"
 run/main_scene="uid://dhla7jkvgv3b5"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=240

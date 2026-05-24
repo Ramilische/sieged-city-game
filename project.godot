@@ -11,6 +11,10 @@ config_version=5
 [application]
 
 config/name="Sieged City"
+config/name_localized={
+"ru_RU": "Осажденный город"
+}
+config/version="0.1"
 run/main_scene="uid://dhla7jkvgv3b5"
 config/features=PackedStringArray("4.6", "GL Compatibility")
 run/max_fps=240

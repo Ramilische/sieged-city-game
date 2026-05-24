@@ -45,7 +45,7 @@ layout_mode = 2
 
 [node name="Title" type="Label" parent="CenterContainer/VBoxContainer" unique_id=2100103832]
 layout_mode = 2
-text = "Название игры"
+text = "Осажденный город"
 label_settings = ExtResource("4_36rvq")
 
 [node name="Button" type="Button" parent="CenterContainer/VBoxContainer" unique_id=626906850]

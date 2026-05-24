@@ -307,7 +307,8 @@ drag_right_margin = 0.1
 
 [node name="Parallax2D" type="Parallax2D" parent="." unique_id=1670515098]
 
-[node name="Player UI" parent="." unique_id=971522410 instance=ExtResource("2_8qukl")]
+[node name="Player UI" parent="." unique_id=971522410 node_paths=PackedStringArray("player") instance=ExtResource("2_8qukl")]
+player = NodePath("../Player")
 
 [node name="TileMap" type="TileMap" parent="." unique_id=427888150]
 tile_set = SubResource("TileSet_p4se4")

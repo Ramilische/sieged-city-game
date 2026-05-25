@@ -1,9 +1,9 @@
 class_name Enemy extends CharacterBody2D
 
 @export var patrol_speed: float = 2000.0
-@export var pursue_speed: float = 4000.0
-@export var acceleration: float = 40.0
-@export var deceleration: float = 50.0
+@export var pursue_speed: float = 80.0
+@export var acceleration: float = 100.0
+@export var deceleration: float = 1500.0
 @export var jump_impulse: float = 300.0
 @export var gravity: float = 980.0
 @export var attack_distance: float = 25.0
@@ -48,6 +48,13 @@ func generate_raycasts() -> void:
 		find_child('Rays').add_child(ray)
 		ray.target_position *= view_distance_multiplier
 		ray.enabled = true
+func process_attack(dmg: int, direction: bool, h_force: float, v_force: float):
+	stats.take_damage(dmg)
+	#velocity.y = -v_force
+	#if direction:
+		#velocity.x = -h_force
+	#else:
+		#velocity.x = h_force
 
 func death():
 	anim_sprite.play('Death')

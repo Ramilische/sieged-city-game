@@ -556,18 +556,22 @@ points = PackedVector2Array(22, -17, 22, -10, 6, -3, 6, -9, 9, -17)
 script = ExtResource("1_5jukt")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1721264176]
+visible = false
 position = Vector2(0, -12.5)
 shape = SubResource("RectangleShape2D_wocps")
 
 [node name="CrouchCollision" type="CollisionShape2D" parent="." unique_id=1422986606]
+visible = false
 position = Vector2(0, -10.5)
 shape = SubResource("RectangleShape2D_17uin")
 disabled = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1660983629]
 sprite_frames = SubResource("SpriteFrames_pue7u")
-animation = &"Punch3"
+animation = &"Kick1"
 autoplay = "Idle"
+frame = 2
+frame_progress = 0.880168
 offset = Vector2(0, -17.5)
 
 [node name="AudioListener2D" type="AudioListener2D" parent="." unique_id=1944855361]
@@ -661,7 +665,6 @@ visible = false
 shape = SubResource("ConvexPolygonShape2D_8twii")
 
 [node name="KickAttack1" type="Area2D" parent="Hitboxes" unique_id=1687642368]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hitboxes/KickAttack1" unique_id=1234170148]
 shape = SubResource("ConvexPolygonShape2D_t733j")

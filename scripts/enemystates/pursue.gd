@@ -19,7 +19,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 func physics_update(_delta: float) -> void:
 	enemy.velocity.y += enemy.gravity * _delta
-	enemy.velocity.x = enemy.pursue_speed * _delta * direction
+	enemy.velocity.x += enemy.acceleration * _delta * direction
+	enemy.velocity.x = min(abs(enemy.velocity.x), abs(enemy.pursue_speed)) * direction
 	enemy.move_and_slide()
 	distance = abs(enemy.position.x - player.position.x);
 	direction = -1 if enemy.position.x > player.position.x else 1

@@ -23,7 +23,7 @@ var attacks: Dictionary = {
 		},
 		'damage': {
 			1: 20,
-			2: 25,
+			2: 30,
 			3: 25
 		},
 		'is_weapon': true
@@ -198,7 +198,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if not ch:
 			return
 	var attack = attacks[attack_type]
-	body.stats.take_damage(player.stats.damage(attack['damage'][attack_phase], attack['is_weapon']))
+	body.process_attack(attack['damage'][attack_phase], player.anim_sprite.flip_h, 1500, 200)
 	already_damaged = true
 	if body is Enemy:
 		if body.stats.enemy_health <= 0:

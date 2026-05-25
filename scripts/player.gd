@@ -5,7 +5,7 @@ class_name Player extends CharacterBody2D
 @export var deceleration: float = 50.0
 @export var crouch_speed: float = 100.0
 @export var jump_impulse: float = 300.0
-@export var push_force: float = 100
+@export var push_force: float = 40
 @export var gravity: float = 980.0
 @export var jump_buffering: bool = true
 @export var coyote_time: bool = true
